@@ -19,6 +19,10 @@ function Serial(port, options){
     self.emit('disconnect', self.device);
     self.device = null;
   });
+  this.device.on('data', function(data) {
+    console.log('onData', data.toString());
+    self.emit('data', data);
+  });
   EventEmitter.call(this);
   return this;
 };
