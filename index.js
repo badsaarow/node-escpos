@@ -19,3 +19,8 @@ exports.Screen  = require('./screen');
 exports.Adapter  = require('./adapter');
 exports.command  = require('./commands');
 exports.Printer2 = require('./promiseify');
+
+/**
+ * Arduino device
+ */
+exports.Arduino  = require('./arduino');
