@@ -42,6 +42,7 @@ Serial.prototype.open = function(callback){
  * @return {[type]}            [description]
  */
 Serial.prototype.write = function(data, callback){
+  console.log('write', data);
   this.device.write(data, callback);
   return this;
 };
