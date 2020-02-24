@@ -35,8 +35,35 @@ describe('Arduino serial test', function() {
       console.log('port opened');
       arduino.print('hello my printer\n');
       arduino.flush();
-      arduino.close();
-      done();
+      arduino.close(() => {
+        done();
+      });
+    })
+  })
+
+  it('arduino#serial write repeat', function(done){
+    const sensorData = {
+      power: 'on',
+      direction: 'up'
+    }
+
+    const port = new escpos.Serial('COM18');
+    const arduino = new escpos.Arduino(port);
+
+    port.open(err => {
+      if (err) {
+        console.error(err);
+        assert.fail();
+      }
+
+      console.log('port opened');
+      for (let i = 0; i < 30; i++ ) {
+        arduino.print(JSON.stringify(sensorData) + '\n');
+      }
+      arduino.flush();
+      arduino.close(() => {
+        done();
+      });
     })
   })
 });
