@@ -22,17 +22,19 @@ describe('Arduino serial test', function() {
   })
 
   it('arduino#serial write', function(done){
-    const device = new escpos.Serial('COM18');
-    const arduino = new escpos.Arduino(device);
+    // promise는 bt와 usb device만 적용되어 있어, serial은 callback으로 처리해야 한다.
+    const port = new escpos.Serial('COM18');
+    const arduino = new escpos.Arduino(port);
 
-    device.open(err => {
+    port.open(err => {
       if (err) {
         console.error(err);
         assert.fail();
       }
 
       console.log('port opened');
-      arduino.print('hello helele\n');
+      arduino.print('hello my printer\n');
+      arduino.flush();
       arduino.close();
       done();
     })
