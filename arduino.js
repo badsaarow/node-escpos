@@ -20,6 +20,27 @@ function Arduino(adapter, options) {
   this.adapter = adapter;
   this.options = options;
   this.buffer = new MutableBuffer();
+  this.recvBuffer = null;
+
+  this.adapter.on('message', (data) => {
+    //console.log('arduino message', data.toString(), data)
+    if (this.recvBuffer) {
+      this.recvBuffer = Buffer.concat([this.recvBuffer, data])
+    } else {
+      this.recvBuffer = Buffer.from(data)
+    }
+    //console.log('arduino message', this.recvBuffer.toString(), this.recvBuffer[this.recvBuffer.length-1], this.recvBuffer)
+    const lfIdx = this.recvBuffer.indexOf(10)
+    if (lfIdx === -1) return
+    const recv = this.recvBuffer.slice(0, lfIdx+1)
+    this.emit('message', recv)
+    this.recvBuffer = this.recvBuffer.slice(lfIdx+1)
+    if (this.recvBuffer[this.recvBuffer.length-1] === 10) {
+      this.emit('message', recv)
+      this.recvBuffer = null
+    }
+    
+  })
 };
 
 Arduino.create = function (device) {

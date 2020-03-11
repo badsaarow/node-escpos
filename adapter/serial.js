@@ -1,6 +1,7 @@
 'use strict';
 const util          = require('util');
 const EventEmitter  = require('events');
+const Readline = require('@serialport/parser-readline');
 
 /**
  * SerialPort device
@@ -9,19 +10,22 @@ const EventEmitter  = require('events');
  */
 function Serial(port, options){
   var self = this;
+  const SerialPort = require('serialport');
   options = options || { 
-    baudRate: 9600,
+    baudRate: 115200,
     autoOpen: false
   };
-  const SerialPort = require('serialport');
   this.device = new SerialPort(port, options);
+  //const parser = this.device.pipe(new Readline({ delimiter: '\r' }))
+  //parser.on('data', console.log)
+
   this.device.on('close', function() {
     self.emit('disconnect', self.device);
     self.device = null;
   });
   this.device.on('data', function(data) {
-    console.log('onData', data.toString());
-    self.emit('data', data);
+    //console.log('serial Data', data.toString(), data);
+    self.emit('message', data);
   });
   EventEmitter.call(this);
   return this;
@@ -39,6 +43,7 @@ Serial.prototype.open = function(callback){
   return this;
 };
 
+
 /**
  * write data to serialport device
  * @param  {[type]}   buf      [description]
@@ -46,8 +51,8 @@ Serial.prototype.open = function(callback){
  * @return {[type]}            [description]
  */
 Serial.prototype.write = function(data, callback){
-  console.log('write', data);
-  this.device.write(data, callback);
+  const res = this.device.write(data, callback);
+  //console.log('write', data.toString(), res, data);
   return this;
 };
 
