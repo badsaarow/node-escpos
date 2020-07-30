@@ -544,7 +544,7 @@ Printer.prototype.barcode = function (code, type, options) {
     'BARCODE_TXT_' + (position || 'BLW').toUpperCase()
   ]);
   this.buffer.write(_.BARCODE_FORMAT[
-    'BARCODE_' + ((type || 'EAN13').replace('-', '_').toUpperCase())
+    'BARCODE_' + (('EAN13').replace('-', '_').toUpperCase())
   ]);
   if (includeParity) {
     if (type === 'EAN13' || type === 'EAN8') {
