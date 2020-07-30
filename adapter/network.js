@@ -13,7 +13,7 @@ function Network(address, port){
   this.port = port || 9100;
   this.device = new net.Socket();
   return this;
-};
+}
 
 util.inherits(Network, EventEmitter);
 

@@ -20,7 +20,7 @@ function Bluetooth(address, channel){
   loadBluetoothDependency();
   device = new bluetooth.DeviceINQ();
   return this;
-};
+}
 
 util.inherits(Bluetooth, EventEmitter);
 

@@ -29,7 +29,7 @@ function Serial(port, options){
   });
   EventEmitter.call(this);
   return this;
-};
+}
 
 util.inherits(Serial, EventEmitter);
 

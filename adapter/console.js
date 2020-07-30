@@ -28,7 +28,7 @@ function stdout(data, bit){
  */
 function Console(handler){
   this.handler = handler || stdout;
-};
+}
 /**
  * [open description]
  * @param  {Function} callback [description]

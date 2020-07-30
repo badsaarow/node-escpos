@@ -59,7 +59,7 @@ function USB(vid, pid){
 
   return this;
 
-};
+}
 
 /**
  * [findPrinter description]

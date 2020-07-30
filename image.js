@@ -25,7 +25,7 @@ function Image(pixels){
     this.data.push(rgb(new Array(this.size.colors).fill(0).map(function(_, b){
       return self.pixels.data[ i + b ];
     })));
-  };
+  }
 
   this.data = this.data.map(function(pixel) {
    if (pixel.a == 0) return 0;
@@ -33,7 +33,7 @@ function Image(pixels){
    return shouldBeWhite ? 0 : 1;
   });
 
-};
+}
 
 /**
  * [load description]

@@ -41,7 +41,7 @@ function Arduino(adapter, options) {
     }
     
   })
-};
+}
 
 Arduino.create = function (device) {
   const printer = new Arduino(device);
