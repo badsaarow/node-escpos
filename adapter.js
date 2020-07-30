@@ -29,7 +29,6 @@ Adapter.extends = function(ctor){
  */
 Adapter.prototype.open = function () {
   throw new Error('NotImplementedException');
-  return this;
 };
 
 /**
@@ -38,7 +37,6 @@ Adapter.prototype.open = function () {
  */
 Adapter.prototype.close = function () {
   throw new Error('NotImplementedException');
-  return this;
 };
 
 /**
@@ -47,7 +45,6 @@ Adapter.prototype.close = function () {
  */
 Adapter.prototype.write = function () {
   throw new Error('NotImplementedException');
-  return this;
 };
 
 /**
