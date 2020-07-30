@@ -299,7 +299,7 @@ _.GSV0_FORMAT = {
  * [BEEP description]
  * @type {string}
  */
-_.BEEP = '\x1b\x42', // Printer Buzzer pre hex
+_.BEEP = '\x1b\x42'; // Printer Buzzer pre hex
   
 /**
  * [COLOR description]
