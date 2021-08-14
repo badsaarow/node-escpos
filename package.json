@@ -30,15 +30,15 @@
   },
   "homepage": "https://github.com/song940/node-escpos#readme",
   "dependencies": {
-    "qr-image": "*",
     "get-pixels": "*",
     "iconv-lite": "*",
-    "mutable-buffer": "^2.0.3"
+    "mutable-buffer": "^2.0.3",
+    "qr-image": "*"
   },
   "optionalDependencies": {
-    "usb": "*",
+    "node-bluetooth": "*",
     "serialport": "*",
-    "node-bluetooth": "*"
+    "usb": "*"
   },
   "devDependencies": {
     "mocha": "*"
