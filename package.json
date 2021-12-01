@@ -44,7 +44,7 @@
     "mocha": "*"
   },
   "engines": {
-    "node": ">=8.x"
+    "node": ">=12.x"
   },
   "directories": {
     "doc": "docs",
