@@ -32,7 +32,7 @@
   "dependencies": {
     "get-pixels": "*",
     "iconv-lite": "*",
-    "mutable-buffer": "^2.0.3",
+    "mutable-buffer": "^4.0.2",
     "qr-image": "*"
   },
   "optionalDependencies": {
